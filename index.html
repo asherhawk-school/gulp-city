@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<canvas id="game"></canvas>
+<canvas id="hud"></canvas>
 
 <!-- Main menu -->
 <div id="menu" class="screen">
@@ -90,7 +90,9 @@
 
 <button id="quitBtn" class="quit hidden" title="Leave game (Esc)">✕</button>
 
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }</script>
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
-<script src="game.js"></script>
+<script src="sim.js"></script>
+<script type="module" src="game.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # Gulp City
 
-Steer a hungry sinkhole through a little cartoon city. Swallow anything smaller than you — people, cones, cars, houses, and eventually skyscrapers — and grow bigger with every bite. Holes that are clearly bigger than you can swallow *you*, so watch your back. Whoever has the highest score when the timer runs out wins.
+Steer a hungry sinkhole through a little 3D cartoon city. Swallow anything smaller than you — people, cones, cars, houses, and eventually skyscrapers — and grow bigger with every bite. Holes that are clearly bigger than you can swallow *you*, so watch your back. Whoever has the highest score when the timer runs out wins.
 
 **Play it:** https://asherhawk-school.github.io/gulp-city/
 
@@ -23,6 +23,7 @@ Steer a hungry sinkhole through a little cartoon city. Swallow anything smaller 
 
 - You can swallow an object once your hole is a bit bigger than it. The bar in the corner shows what you can swallow next.
 - A hole at least 20% bigger than another can swallow it. The swallowed player drops to 60% of their score and respawns after 3 seconds, blinking and safe for a short time.
+- Swallowed things are rebuilt after a while (people and cones in ~15 s, skyscrapers in ~70 s), so the city never runs dry.
 - The round ends when the timer hits zero. Highest score wins.
 
 ## How online play works
@@ -34,7 +35,7 @@ Online games are peer-to-peer over WebRTC using [PeerJS](https://peerjs.com/). T
 
 ## Run locally
 
-It's plain HTML/JS with no build step:
+It's plain HTML/JS with no build step. 3D is drawn with [three.js](https://threejs.org/), loaded from a CDN:
 
 ```bash
 python3 -m http.server 8000
