@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Gulp City</title>
+<meta name="description" content="Steer a hungry sinkhole, swallow the city, and outgrow your rivals. Play against bots, a friend on the same keyboard, or friends online.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<!-- Main menu -->
+<div id="menu" class="screen">
+  <div class="panel">
+    <h1><span class="dot"></span>Gulp City</h1>
+    <p class="tag">Steer a hungry sinkhole. Swallow the city. Outgrow your rivals.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-mode="solo">Vs Bots</button>
+      <button class="tab" data-mode="local">Local 2P</button>
+      <button class="tab" data-mode="online">Online</button>
+    </div>
+
+    <div class="row">
+      <label>Your name <input id="name1" maxlength="14" placeholder="Player"></label>
+      <label class="only-local">Player 2 name <input id="name2" maxlength="14" placeholder="Player 2"></label>
+    </div>
+
+    <div class="row settings">
+      <label>Bots <span id="botsVal">7</span>
+        <input id="bots" type="range" min="0" max="11" value="7"></label>
+      <label>Bot skill
+        <select id="diff"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option></select></label>
+      <label>Round
+        <select id="dur"><option value="60">1 min</option><option value="120" selected>2 min</option><option value="180">3 min</option><option value="300">5 min</option></select></label>
+    </div>
+
+    <div class="mode-panel" data-for="solo">
+      <p class="hint">Mouse, touch, WASD or arrow keys to move.</p>
+      <button class="big" id="startSolo">Play</button>
+    </div>
+    <div class="mode-panel hidden" data-for="local">
+      <p class="hint">Split screen on one keyboard. <b>Player 1:</b> WASD &nbsp; <b>Player 2:</b> Arrow keys</p>
+      <button class="big" id="startLocal">Play</button>
+    </div>
+    <div class="mode-panel hidden" data-for="online">
+      <p class="hint">Host a room and send your friends the code or link. Bots fill the empty spots.</p>
+      <div class="row">
+        <button class="big" id="hostBtn">Host a game</button>
+      </div>
+      <div class="row join">
+        <input id="joinCode" maxlength="5" placeholder="CODE" autocomplete="off">
+        <button class="big alt" id="joinBtn">Join</button>
+      </div>
+    </div>
+    <p class="err" id="menuErr"></p>
+  </div>
+</div>
+
+<!-- Online lobby -->
+<div id="lobby" class="screen hidden">
+  <div class="panel">
+    <h2 id="lobbyTitle">Lobby</h2>
+    <div id="codeBox" class="codebox">
+      <div class="code" id="roomCode">-----</div>
+      <button class="small" id="copyLink">Copy invite link</button>
+    </div>
+    <p class="hint" id="lobbyStatus">Connecting…</p>
+    <ul id="playerList" class="plist"></ul>
+    <div class="row">
+      <button class="big" id="lobbyStart">Start game</button>
+      <button class="big alt" id="lobbyLeave">Leave</button>
+    </div>
+  </div>
+</div>
+
+<!-- Results -->
+<div id="results" class="screen hidden">
+  <div class="panel">
+    <h2 id="winnerTitle">Time's up!</h2>
+    <ol id="resultList" class="rlist"></ol>
+    <div class="row">
+      <button class="big" id="againBtn">Play again</button>
+      <button class="big alt" id="menuBtn">Main menu</button>
+    </div>
+    <p class="hint" id="resultsHint"></p>
+  </div>
+</div>
+
+<button id="quitBtn" class="quit hidden" title="Leave game (Esc)">✕</button>
+
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
